@@ -49,12 +49,22 @@ exports.fnRemoveTask = function(req, res){
 
 exports.fnUpdateTask = function(req, res){
     console.log('Update task');
-    tasks.findByIdAndUpdate(req.params.id, {$set:req.body}, function(err, taskData){
+    // tasks.findByIdAndUpdate(req.params.id, {$set:req.body}, function(err, taskData){
+    //     if (err){
+    //         res.send(err);
+    //         return;
+    //     }
+    //     console.log('update task: ',taskData.status);
+    //     res.send(taskData);
+    // })
+    var updateTask = req.body;
+    console.log('UpdateBody: ',updateTask);
+    tasks.updateOne({taskId: req.params.id}, updateTask, function(err, data) {
         if (err){
             res.send(err);
             return;
         }
-        console.log('update task: ',taskData.status);
-        res.send(taskData);
+        console.log('Updated data: ',data);
+        res.send(data);
     })
 }
