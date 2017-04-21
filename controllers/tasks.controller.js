@@ -39,6 +39,7 @@ exports.fnRemoveTask = function(req, res){
             return;
         }
         var response = {
+            id:task._id,
             message: "Task successfully deleted",
             name: task.title
         };

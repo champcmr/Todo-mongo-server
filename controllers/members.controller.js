@@ -37,6 +37,7 @@ exports.fnRemoveMember = function(req, res){
         }
         var response = {
             message: "Member successfully deleted",
+            id: member._id,
             name: member.firstName + " " + member.lastName
         };
         res.send(response);
